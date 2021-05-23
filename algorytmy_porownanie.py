@@ -91,4 +91,4 @@ print("Quick_sort,reverse_sorted", calculateExecutionTime(C[::-1], quickSort))
 # Próbka danych: 200000 rekordów.
 # Dla wszystkich typów tablic, najszybszym algorytmem sortującym okazał się heap sort.
 # Quick sort jedynie w przypadku tablic losowych jest w stanie dorównać heap_sort pod względem czasu wykonania. W tablicach posortowanych oraz odwrotnie posortowanych jest zauważalnie wolniejszy.
-# Sortowanie bąbelkowe jest wielokrotnie mniej wydajnym algorytmem od pozostałych dwóch, i nie powinno być używane dla jakichkolwiek większych zbiorów danych.
+# Sortowanie bąbelkowe jest wielokrotnie mniej wydajnym algorytmem od pozostałych dwóch, i nie powinno być używane dla jakichkolwiek większych zbiorów danych. Okazało się szybsze jedynie od quicksort, i tylko w przypadku danych posortowanych.
