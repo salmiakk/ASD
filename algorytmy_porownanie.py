@@ -1,4 +1,7 @@
 import datetime
+from numpy import random
+import sys
+sys.setrecursionlimit(55000)
 
 def quickSort(A,p,r):
     if (p < r):
@@ -60,24 +63,32 @@ def calculateExecutionTime(a, f):
     return end-now
 
 
-# 50 elements in each array
-
-A = [7,10,20,15,4,3,3,8,100,1,7,10,20,15,4,3,3,8,100,1,7,10,20,15,4,3,3,8,100,1,7,10,20,15,4,3,3,8,100,1,7,10,20,15,4,3,3,8,100,1]
+A=random.randint(100, size=(20000))
+B=A.copy()
+C=A.copy()
 print("Bubble_sort,random", calculateExecutionTime(A, bubbleSort))
-print("Heap_sort,random", calculateExecutionTime(A, heapSort))
-print("Quick_sort,random", calculateExecutionTime(A, quickSort))
+print("Heap_sort,random", calculateExecutionTime(B, heapSort))
+print("Quick_sort,random", calculateExecutionTime(C, quickSort))
 
-B = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]
-print("Bubble_sort,sorted", calculateExecutionTime(B,bubbleSort))
+A=random.randint(100, size=(20000))
+A.sort()
+B=A.copy()
+C=A.copy()
+
+print("Bubble_sort,sorted", calculateExecutionTime(A,bubbleSort))
 print("Heap_sort,sorted", calculateExecutionTime(B,heapSort))
-print("Quick_sort,sorted", calculateExecutionTime(B,quickSort))
+print("Quick_sort,sorted", calculateExecutionTime(C,quickSort))
 
-C = [50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
-print("Bubble_sort,reverse_sorted", calculateExecutionTime(C, bubbleSort))
-print("Heap_sort,reverse_sorted", calculateExecutionTime(C, heapSort))
-print("Quick_sort,reverse_sorted", calculateExecutionTime(C, quickSort))
+A=random.randint(100, size=(20000))
+A.sort()
+B=A.copy()
+C=A.copy()
 
+print("Bubble_sort,reverse_sorted", calculateExecutionTime(A[::-1], bubbleSort))
+print("Heap_sort,reverse_sorted", calculateExecutionTime(B[::-1], heapSort))
+print("Quick_sort,reverse_sorted", calculateExecutionTime(C[::-1], quickSort))
 
-# Dla danych posortowanych, najlepiej sprawdza się sortowanie bąbelkowe (w tym algorytmie złożoność przy takim zbiorze danych wynosi O(n)).
-# W przypadku danych losowych, algorytmy heap_sort oraz quick_sort wykazały bardzo podobny czas wykonania - w obu przypadkach złożoność wynosi O(nlogn).
-# Dla danych odwrotnie posortowanych wyraźnie zauważamy bardzo niską wydajność sortowania bąbelkowego. Algorytmy heap_sort i quick_sort wykazują w tym przypadku podobne czasy wykonania.
+# Próbka danych: 200000 rekordów.
+# Dla wszystkich typów tablic, najszybszym algorytmem sortującym okazał się heap sort.
+# Quick sort jedynie w przypadku tablic losowych jest w stanie dorównać heap_sort pod względem czasu wykonania. W tablicach posortowanych oraz odwrotnie posortowanych jest zauważalnie wolniejszy.
+# Sortowanie bąbelkowe jest wielokrotnie mniej wydajnym algorytmem od pozostałych dwóch, i nie powinno być używane dla jakichkolwiek większych zbiorów danych.
